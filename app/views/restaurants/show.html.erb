@@ -1,0 +1,19 @@
+<div class="w-50 mx-auto card my-5">
+  <div class="card-body">
+    <h1 class="card-title"><%= @restaurant.name %></h1>
+    <p>name : <%= @restaurant.name %></p>
+    <p>address : <%= @restaurant.address %></p>
+    <p>category : <%= @restaurant.category %></p>
+    <p>phone number : <%= @restaurant.phone_number %></p>
+    <div>
+      reviews : <% @restaurant.reviews.each do |review| %>
+        <%= review.rating %>
+        |
+        <%= review.content %>
+      <% end %>
+    </div>
+    <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+    <%= link_to "Delete", restaurant_path(@restaurant),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+  </div>
+</div>
